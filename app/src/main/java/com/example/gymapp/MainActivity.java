@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.volley.Request;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void pesquisarUser(View view){
         String email = ((EditText)findViewById(R.id.edEmail)).getText().toString();
+        Button btnLogin = (Button)findViewById(R.id.btnLogin);
 
         JSONObject jsonObj = new JSONObject();
         try {
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         String url = "http://192.168.1.215:5000/search";
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 }
