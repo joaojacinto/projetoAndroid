@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        System.out.println("hello");
+
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         String url = "http://192.168.1.215:5000/search";
 
