@@ -9,11 +9,10 @@
 		switch($_GET['apicall']){
 			
 			case 'signup':
-				if(isTheseParametersAvailable(array('username','email','password','gender'))){
+				if(isTheseParametersAvailable(array('username','email','password'))){
 					$username = $_POST['username']; 
 					$email = $_POST['email']; 
 					$password = md5($_POST['password']);
-					$gender = $_POST['gender']; 
 					
 					$stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
 					$stmt->bind_param("ss", $username, $email);
@@ -25,21 +24,20 @@
 						$response['message'] = 'User already registered';
 						$stmt->close();
 					}else{
-						$stmt = $conn->prepare("INSERT INTO users (username, email, password, gender) VALUES (?, ?, ?, ?)");
-						$stmt->bind_param("ssss", $username, $email, $password, $gender);
+						$stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+						$stmt->bind_param("sss", $username, $email, $password);
 
 						if($stmt->execute()){
-							$stmt = $conn->prepare("SELECT id, id, username, email, gender FROM users WHERE username = ?"); 
+							$stmt = $conn->prepare("SELECT id, id, username, email FROM users WHERE username = ?"); 
 							$stmt->bind_param("s",$username);
 							$stmt->execute();
-							$stmt->bind_result($userid, $id, $username, $email, $gender);
+							$stmt->bind_result($userid, $id, $username, $email);
 							$stmt->fetch();
 							
 							$user = array(
 								'id'=>$id, 
 								'username'=>$username, 
-								'email'=>$email,
-								'gender'=>$gender
+								'email'=>$email
 							);
 							
 							$stmt->close();
@@ -64,7 +62,7 @@
 					$username = $_POST['username'];
 					$password = md5($_POST['password']); 
 					
-					$stmt = $conn->prepare("SELECT id, username, email, gender FROM users WHERE username = ? AND password = ?");
+					$stmt = $conn->prepare("SELECT id, username, email FROM users WHERE username = ? AND password = ?");
 					$stmt->bind_param("ss",$username, $password);
 					
 					$stmt->execute();
@@ -73,14 +71,13 @@
 					
 					if($stmt->num_rows > 0){
 						
-						$stmt->bind_result($id, $username, $email, $gender);
+						$stmt->bind_result($id, $username, $email);
 						$stmt->fetch();
 						
 						$user = array(
 							'id'=>$id, 
 							'username'=>$username, 
-							'email'=>$email,
-							'gender'=>$gender
+							'email'=>$email
 						);
 						
 						$response['error'] = false; 

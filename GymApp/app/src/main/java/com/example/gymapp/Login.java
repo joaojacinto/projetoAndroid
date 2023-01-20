@@ -30,13 +30,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextUsername = (EditText) findViewById(R.id.edUsername);
+        editTextPassword = (EditText) findViewById(R.id.edPassword);
 
 
         //if user presses on login
         //calling the method login
-        findViewById(R.id.buttonLogin).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 userLogin();
@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
         });
 
         //if user presses on not registered
-        findViewById(R.id.textViewRegister).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.txtLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //open register screen

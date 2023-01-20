@@ -27,12 +27,11 @@
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
             <Button
-                android:id="@+id/buttonLogout"
-                android:layout_width="20dp"
+                android:id="@+id/btnLogout"
+                android:layout_width="10dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/appbar_padding"
                 android:gravity="center"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="150dp"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:text="Logout" />
@@ -42,6 +41,7 @@
             android:id="@+id/idUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

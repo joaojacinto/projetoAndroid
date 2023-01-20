@@ -12,8 +12,6 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,8 +34,11 @@ public class Home_Main extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
 
+
+
+        //botao com envelope
+        FloatingActionButton fab = binding.fab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +46,16 @@ public class Home_Main extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        TextView id_avaliacao = (TextView)findViewById(R.id.txtIdAvaliacao);
+        TextView id_utilizador = (TextView)findViewById(R.id.txtUtilizador);
+        TextView gordura_corporal = (TextView)findViewById(R.id.txtGorduraCorporal);
+        TextView massa_muscular = (TextView)findViewById(R.id.txtMassaMuscular);
+        TextView peso = (TextView)findViewById(R.id.txtPeso);
+        TextView altura = (TextView)findViewById(R.id.txtAltura);
+        TextView massa_gorda = (TextView)findViewById(R.id.txtMassaGorda);
+
+
 
         if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
@@ -56,7 +67,7 @@ public class Home_Main extends AppCompatActivity {
         TextView username = (TextView)findViewById(R.id.idUser);
         username.setText(user.getUsername());
 
-        findViewById(R.id.buttonLogout).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

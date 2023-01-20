@@ -1,16 +1,13 @@
 package com.example.gymapp;
 
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextUsername = (EditText) findViewById(R.id.edUsername);
+        editTextEmail = (EditText) findViewById(R.id.edEmail);
+        editTextPassword = (EditText) findViewById(R.id.edPassword);
 
 
-        findViewById(R.id.buttonRegister).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnRegisto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //if user pressed on button register
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.textViewLogin).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.txtViewLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //if user pressed on login
@@ -134,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 //hiding the progressbar after completion
                 progressBar.setVisibility(View.GONE);
+
+                Log.d("joao", s);
 
                 try {
                     //converting response to json object
