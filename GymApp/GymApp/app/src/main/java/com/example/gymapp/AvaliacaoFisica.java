@@ -10,11 +10,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.gymapp.Classes.Avaliacao;
+import com.example.gymapp.Classes.RequestHandler;
 import com.example.gymapp.Classes.SharedPrefManager;
+import com.example.gymapp.Classes.URLs;
 import com.example.gymapp.Classes.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class AvaliacaoFisica extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +38,10 @@ public class AvaliacaoFisica extends AppCompatActivity {
         }); */
     }
 
-    private void avaliacaofisica{
-        class avaliacao_fisica extends AsyncTask<Void, Void, String> {
+    private void avaliacaofisica()
 
+    {
+        class avaliacao_fisica extends AsyncTask<Void, Void, String> {
             ProgressBar progressBar;
 
             @Override
@@ -60,21 +66,23 @@ public class AvaliacaoFisica extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                         //getting the user from the response
-                        JSONObject userJson = obj.getJSONObject("user");
+                        JSONObject userJson = obj.getJSONObject("avaliacao");
 
                         //creating a new user object
-                        User user = new User(
-                                userJson.getInt("id"),
-                                userJson.getString("username"),
-                                userJson.getString("email")
+                        Avaliacao avaliacao = new Avaliacao(
+                                userJson.getString("gordura_corporal"),
+                                userJson.getString("massa_muscular"),
+                                userJson.getString("peso"),
+                                userJson.getString("altura"),
+                                userJson.getString("massa_gorda")
                         );
 
                         //storing the user in shared preferences
-                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+                        //SharedPrefManager.getInstance(getApplicationContext()).userLogin(avaliacao);
 
                         //starting the home_main activity
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), Home_Main.class));
+                        /*finish();
+                        startActivity(new Intent(getApplicationContext(), Home_Main.class));*/
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
                     }
@@ -82,5 +90,22 @@ public class AvaliacaoFisica extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                //creating request handler object
+               /* RequestHandler requestHandler = new RequestHandler();
+
+                //creating request parameters
+                HashMap<String, String> params = new HashMap<>();
+                params.put("username", username);
+                params.put("password", password);
+
+                //returing the response
+                return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
+                */
+                return("a");
+            }
+        }
     }
 }
