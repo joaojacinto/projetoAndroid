@@ -3,6 +3,7 @@ package com.example.gymapp;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -39,7 +40,7 @@ public class AvaliacaoFisica extends AppCompatActivity {
         }); */
     }
 
-    private void avaliacaofisica()
+    public void avaliacaofisica()
 
     {
         class avaliacao_fisica extends AsyncTask<Void, Void, String> {
@@ -67,17 +68,18 @@ public class AvaliacaoFisica extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                         //getting the user from the response
-                        JSONObject userJson = obj.getJSONObject("avaliacao");
+                        JSONObject avaliacaoJSON = obj.getJSONObject("avaliacao");
 
                         //creating a new user object
                         Avaliacao avaliacao = new Avaliacao(
-                                userJson.getString("gordura_corporal"),
-                                userJson.getString("massa_muscular"),
-                                userJson.getString("peso"),
-                                userJson.getString("altura"),
-                                userJson.getString("massa_gorda")
+                                avaliacaoJSON.getString("gordura_corporal"),
+                                avaliacaoJSON.getString("massa_muscular"),
+                                avaliacaoJSON.getString("peso"),
+                                avaliacaoJSON.getString("altura"),
+                                avaliacaoJSON.getString("massa_gorda")
                         );
 
+                        JSONObject userJson = obj.getJSONObject("avaliacao");
                         User user = new User(
                                 userJson.getInt("id"),
                                 userJson.getString("username"),
@@ -86,10 +88,11 @@ public class AvaliacaoFisica extends AppCompatActivity {
 
                         //storing the user in shared preferences
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+                        SharedPrefManager.getInstance(getApplicationContext()).getId(avaliacao);
 
                         //starting the home_main activity
                         finish();
-                        startActivity(new Intent(getApplicationContext(), Avaliacao.class));
+                        startActivity(new Intent(getApplicationContext(), AvalicaoFisicaPage2.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
                     }
