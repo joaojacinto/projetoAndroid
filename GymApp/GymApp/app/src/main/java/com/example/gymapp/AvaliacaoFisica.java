@@ -19,6 +19,7 @@ import com.example.gymapp.Classes.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 public class AvaliacaoFisica extends AppCompatActivity {
@@ -77,12 +78,18 @@ public class AvaliacaoFisica extends AppCompatActivity {
                                 userJson.getString("massa_gorda")
                         );
 
+                        User user = new User(
+                                userJson.getInt("id"),
+                                userJson.getString("username"),
+                                userJson.getString("email")
+                        );
+
                         //storing the user in shared preferences
-                        //SharedPrefManager.getInstance(getApplicationContext()).userLogin(avaliacao);
+                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
 
                         //starting the home_main activity
-                        /*finish();
-                        startActivity(new Intent(getApplicationContext(), Home_Main.class));*/
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), Avaliacao.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
                     }
@@ -94,17 +101,21 @@ public class AvaliacaoFisica extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... voids) {
                 //creating request handler object
-               /* RequestHandler requestHandler = new RequestHandler();
+               RequestHandler requestHandler = new RequestHandler();
+
+               User user = SharedPrefManager.getInstance(getApplicationContext()).getUser();
+               String userId = String.valueOf(user.getId());
+               String userPassword = user.getEmail();
 
                 //creating request parameters
                 HashMap<String, String> params = new HashMap<>();
-                params.put("username", username);
-                params.put("password", password);
+                params.put("idutilizador", userId);
+                params.put("password", userPassword);
 
                 //returing the response
-                return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
-                */
-                return("a");
+                return requestHandler.sendPostRequest(URLs.URL_AVALIACAOID, params);
+
+//                return("a");
             }
         }
     }

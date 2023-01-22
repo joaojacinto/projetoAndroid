@@ -11,6 +11,9 @@ public class Avaliacao {
         this.massa_gorda=massa_gorda;
     }
 
+    public Avaliacao(int anInt) {
+    }
+
     public String getGordura_corpural() {
         return gordura_corpural;
     }
