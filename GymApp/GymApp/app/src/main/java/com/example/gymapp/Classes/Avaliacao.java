@@ -15,6 +15,10 @@ public class Avaliacao {
     public Avaliacao(int anInt) {
     }
 
+    public Avaliacao(String gordura_corpural) {
+        this.gordura_corpural = gordura_corpural;
+    }
+
     public int getId() {
         return id;
     }

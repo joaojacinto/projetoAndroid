@@ -5,7 +5,7 @@ $response = array();
 
 $idutil = $_POST["idutilizador"];
 
-if (isset($_GET['apicall'])){
+if (isset($_POST['idutilizador'])){
     
     $stmt = $conn->prepare("SELECT gordura_corporal,massa_muscular,peso,altura,massa_gorda FROM avaliacao_fisica WHERE idutilizador = ?");
 	$stmt->bind_param("i",$idutil);

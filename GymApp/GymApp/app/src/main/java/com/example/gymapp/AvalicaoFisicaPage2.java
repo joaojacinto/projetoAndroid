@@ -73,14 +73,18 @@ public class AvalicaoFisicaPage2 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        avaliacaofisica();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        avaliacaofisica();
         return inflater.inflate(R.layout.fragment_avalicao_fisica_page2, container, false);
+    }
+
+    public void avaliacaofisica(View v){
+        avaliacaofisica();
     }
 
     public void avaliacaofisica()

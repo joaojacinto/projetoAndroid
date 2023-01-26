@@ -5,8 +5,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +40,16 @@ public class AvaliacaoFisica extends AppCompatActivity {
                 avaliacao_fisica();
             }
         }); */
+    }
+
+    public void avaliacaofisica(View v){
+        Button btnClique = findViewById(R.id.btnClique);
+        btnClique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                avaliacaofisica();
+            }
+        });
     }
 
     public void avaliacaofisica()
@@ -85,7 +97,9 @@ public class AvaliacaoFisica extends AppCompatActivity {
                                 userJson.getString("username"),
                                 userJson.getString("email")
                         );
-
+                        Log.d("joao", avaliacao.getGordura_corpural());
+                        TextView txtGordura = findViewById(R.id.txtGorduraCorporal);
+                        txtGordura.setText(avaliacao.getGordura_corpural());
                         //storing the user in shared preferences
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
                         SharedPrefManager.getInstance(getApplicationContext()).getId(avaliacao);
