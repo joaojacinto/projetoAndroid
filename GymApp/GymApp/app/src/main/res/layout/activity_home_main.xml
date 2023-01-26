@@ -28,11 +28,11 @@
 
             <Button
                 android:id="@+id/buttonLogout"
-                android:layout_width="20dp"
+                android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/appbar_padding"
                 android:gravity="center"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="100dp"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:text="Logout" />

@@ -62,4 +62,10 @@ public class SharedPrefManager {
         editor.apply();
         mCtx.startActivity(new Intent(mCtx, Login.class));
     }
+
+    public void getId(Avaliacao avaliacao){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(KEY_ID, avaliacao.getId());
+    }
 }

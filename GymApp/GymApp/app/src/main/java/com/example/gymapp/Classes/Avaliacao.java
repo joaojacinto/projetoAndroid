@@ -1,6 +1,7 @@
 package com.example.gymapp.Classes;
 
 public class Avaliacao {
+    private int id;
     private String gordura_corpural, massa_muscular,peso,altura,massa_gorda;
 
     public Avaliacao(String gordura_corpural, String massa_muscular, String peso,String altura, String massa_gorda) {
@@ -12,6 +13,14 @@ public class Avaliacao {
     }
 
     public Avaliacao(int anInt) {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getGordura_corpural() {

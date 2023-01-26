@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AvalicaoFisicaPage2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Avaliacao Fisica" />
+
+        <Button
+            android:id="@+id/btnClique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:onClick="avaliacaofisica"
+            tools:ignore="OnClick" />
+
+        <TextView
+            android:id="@+id/txtGorduraCorporal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gordura Corpural" />
+
+        <TextView
+            android:id="@+id/txtMassaMuscular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Massa Muscular" />
+
+        <TextView
+            android:id="@+id/txtPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Peso" />
+
+        <TextView
+            android:id="@+id/txtAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Altura" />
+
+        <TextView
+            android:id="@+id/txtMassaGorda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Massa Gorda" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+</FrameLayout>
