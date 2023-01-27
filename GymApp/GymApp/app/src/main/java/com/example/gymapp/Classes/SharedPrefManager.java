@@ -13,6 +13,15 @@ public class SharedPrefManager {
     private static final String KEY_EMAIL = "keyemail";
     private static final String KEY_ID = "keyid";
 
+
+    private static final String KEY_GORDURA_CORPORAL = "keygorduracorporal";
+    private static final String KEY_MASSA_MUSCULAR = "keymassamuscular";
+    private static final String KEY_PESO = "keypeso";
+    private static final String KEY_ALTURA = "keyaltura";
+    private static final String KEY_MASSA_GORDA = "keymassagorda";
+
+
+
     private static SharedPrefManager mInstance;
     private static Context mCtx;
 
@@ -63,9 +72,14 @@ public class SharedPrefManager {
         mCtx.startActivity(new Intent(mCtx, Login.class));
     }
 
-    public void getId(Avaliacao avaliacao){
+    public Avaliacao getId(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_ID, avaliacao.getId());
+        return new Avaliacao(
+                sharedPreferences.getString(KEY_GORDURA_CORPORAL, null),
+                sharedPreferences.getString(KEY_MASSA_MUSCULAR, null),
+                sharedPreferences.getString(KEY_PESO, null),
+                sharedPreferences.getString(KEY_ALTURA, null),
+                sharedPreferences.getString(KEY_MASSA_GORDA, null)
+        );
     }
 }

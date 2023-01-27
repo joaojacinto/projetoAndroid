@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,12 +16,10 @@ import com.example.gymapp.Classes.Avaliacao;
 import com.example.gymapp.Classes.RequestHandler;
 import com.example.gymapp.Classes.SharedPrefManager;
 import com.example.gymapp.Classes.URLs;
-import com.example.gymapp.Classes.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 public class AvaliacaoFisica extends AppCompatActivity {
@@ -70,10 +67,11 @@ public class AvaliacaoFisica extends AppCompatActivity {
                 super.onPostExecute(s);
                 progressBar.setVisibility(View.GONE);
 
-
                 try {
                     //converting response to json object
                     JSONObject obj = new JSONObject(s);
+
+                    Log.d("joao", obj.toString());
 
                     //if no error in response
                     if (!obj.getBoolean("error")) {
@@ -91,20 +89,13 @@ public class AvaliacaoFisica extends AppCompatActivity {
                                 avaliacaoJSON.getString("massa_gorda")
                         );
 
-                        JSONObject userJson = obj.getJSONObject("avaliacao");
-                        User user = new User(
-                                userJson.getInt("id"),
-                                userJson.getString("username"),
-                                userJson.getString("email")
-                        );
-                        Log.d("joao", avaliacao.getGordura_corpural());
+                        Log.d("joao", avaliacao.getGordura_corporal());
                         TextView txtGordura = findViewById(R.id.txtGorduraCorporal);
-                        txtGordura.setText(avaliacao.getGordura_corpural());
-                        //storing the user in shared preferences
-                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
-                        SharedPrefManager.getInstance(getApplicationContext()).getId(avaliacao);
+                        txtGordura.setText(avaliacao.getGordura_corporal());
 
-                        //starting the home_main activity
+                        SharedPrefManager.getInstance(getApplicationContext()).getUser();
+
+                        //starting avaliacaofisicapage activity
                         finish();
                         startActivity(new Intent(getApplicationContext(), AvalicaoFisicaPage2.class));
                     } else {
@@ -120,14 +111,14 @@ public class AvaliacaoFisica extends AppCompatActivity {
                 //creating request handler object
                RequestHandler requestHandler = new RequestHandler();
 
-               User user = SharedPrefManager.getInstance(getApplicationContext()).getUser();
-               String userId = String.valueOf(user.getId());
-               String userPassword = user.getEmail();
+               Avaliacao avaliacao = SharedPrefManager.getInstance(getApplicationContext()).getId();
+               String userId = String.valueOf(avaliacao.getId());
+               String altura = avaliacao.getAltura();
 
                 //creating request parameters
                 HashMap<String, String> params = new HashMap<>();
                 params.put("idutilizador", userId);
-                params.put("password", userPassword);
+                params.put("altura", altura);
 
                 //returing the response
                 return requestHandler.sendPostRequest(URLs.URL_AVALIACAOID, params);

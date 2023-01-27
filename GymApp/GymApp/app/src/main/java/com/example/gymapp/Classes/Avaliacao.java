@@ -2,21 +2,19 @@ package com.example.gymapp.Classes;
 
 public class Avaliacao {
     private int id;
-    private String gordura_corpural, massa_muscular,peso,altura,massa_gorda;
+    private String gordura_corporal, massa_muscular,peso,altura,massa_gorda;
 
-    public Avaliacao(String gordura_corpural, String massa_muscular, String peso,String altura, String massa_gorda) {
-        this.gordura_corpural=gordura_corpural;
+    public Avaliacao(String gordura_corporal, String massa_muscular, String peso,String altura, String massa_gorda) {
+        this.gordura_corporal =gordura_corporal;
         this.massa_muscular=massa_muscular;
         this.peso=peso;
         this.altura=altura;
         this.massa_gorda=massa_gorda;
     }
 
-    public Avaliacao(int anInt) {
-    }
 
-    public Avaliacao(String gordura_corpural) {
-        this.gordura_corpural = gordura_corpural;
+    public Avaliacao(String gordura_corporal) {
+        this.gordura_corporal = gordura_corporal;
     }
 
     public int getId() {
@@ -27,12 +25,12 @@ public class Avaliacao {
         this.id = id;
     }
 
-    public String getGordura_corpural() {
-        return gordura_corpural;
+    public String getGordura_corporal() {
+        return gordura_corporal;
     }
 
-    public void setGordura_corpural(String gordura_corpural) {
-        this.gordura_corpural = gordura_corpural;
+    public void setGordura_corporal(String gordura_corporal) {
+        this.gordura_corporal = gordura_corporal;
     }
 
     public String getMassa_muscular() {

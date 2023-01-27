@@ -135,7 +135,7 @@ public class AvalicaoFisicaPage2 extends Fragment {
 
                         //storing the user in shared preferences
                         SharedPrefManager.getInstance(getActivity().getApplicationContext()).userLogin(user);
-                        SharedPrefManager.getInstance(getActivity().getApplicationContext()).getId(avaliacao);
+                        SharedPrefManager.getInstance(getActivity().getApplicationContext()).getId();
 
                         //starting the home_main activity
                         getActivity().finish();
